@@ -34,7 +34,6 @@
     "eslint-plugin-import": "^1.8.0",
     "eslint-plugin-jsx-a11y": "^1.2.2",
     "eslint-plugin-react": "^5.1.1",
-    "jQuery": "^1.7.4",
     "mocha": "^2.4.5",
     "mocha-loader": "^0.7.1",
     "moment": "^2.18.1",
