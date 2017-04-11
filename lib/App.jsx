@@ -1,19 +1,14 @@
 import React, { Component } from 'react'
+import Input from './Input'
 
 
 export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-
-    }
-  }
-
   render() {
     return (
-      <nav id="input">
-      input here
-      </nav>
+      <div id="page-wrapper">
+        <Input />
+      </div>
     )
+
   }
 }
