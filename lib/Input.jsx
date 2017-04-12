@@ -4,10 +4,10 @@ export default class Input extends Component {
   constructor() {
     super();
     this.state = {
-      location: '',
-      // language: 'EN'
+      location: ''
+      }
     }
-  }
+
 
   submitLocation() {
     let newLocation = this.state.location
@@ -15,12 +15,16 @@ export default class Input extends Component {
     this.setState({location: newLocation})
   }
 
+  cleanInput(input) {
+    return input.split(' ').reverse().join(' ').replace(/,/gi, '').replace(/\s/g, '/')
+  }
+
   render() {
     return (
       <nav>
         <h1>Weatherly</h1>
-        <input placeholder="Select a City" value={this.state.input} onChange={ (e) => {
-          this.setState( { location: e.target.value } )
+        <input placeholder="Denver, CO" value={this.state.input} onChange={ (e) => {
+          this.setState( { location: this.cleanInput(e.target.value) } )
         }}>
         </input>
 
