@@ -23,15 +23,11 @@ export default class App extends Component {
   }
 
   scrubData(data) {
-    let scrubbedDataKeys = Object.keys(data.forecast.simpleforecast.forecastday)
-
-    let scrubbedData = scrubbedDataKeys.map( (day) => {
-      var dayObj = {}
-       dayObj[data.forecast.simpleforecast.forecastday.keys.title] = data.forecast.simpleforecast.forecastday.keys.title
-       debugger;
+    let scrubbedData = data.forecast.simpleforecast.forecastday.map( (day, index) => {
+      let dayObj = { date : day.date.pretty, High: day.high.fahrenheit, Low: day.low.fahrenheit}
+      console.log(dayObj)
        return dayObj
     })
-    console.log(scrubbedDataKeys)
 
 
   }
