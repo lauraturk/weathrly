@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Input from './Input'
+import DataSet from './api.js'
 
 
 export default class App extends Component {
@@ -16,10 +17,19 @@ export default class App extends Component {
     console.log(this.state)
   }
 
+  displayData(data) {
+    console.log(data)
+  }
+
+  // <Input {displayData(DataSet)} />
+
   render() {
     return (
       <div id="page-wrapper">
-        <Input handleClick={this.handleClick.bind(this)} />
+        {<Input handleClick={this.handleClick.bind(this)} /> }
+        <div>
+          {this.displayData(DataSet)}
+        </div>
       </div>
     )
 
