@@ -2,19 +2,31 @@ import React, { Component } from 'react'
 import Input from './Input'
 import DataSet from './api.js'
 import Scrubber from './Scrubber'
+import keys from '../keys'
 
 
 export default class App extends Component {
   constructor() {
     super()
     this.state = {
-      currentLocation : {},
+      url : `http://api.wunderground.com/api/${keys.johnKey}/forecast/q/CO/Denver.json`,
+      currentLocation : '',
       weather: []
     }
   }
 
+  componentDidMount() {
+    // $.
+    let location = localStorage.getItem('city')
+    this.setState({currentLocation: location ? location : ''}, ()=> {
+      this.setState({weather: this.handleClick(location)})
+      console.log(this.state)
+    })
+  }
+
   handleClick(city) {
     this.state.currentLocation = city
+    localStorage.setItem('city', city.toLowerCase())
     this.scrubDataTenDay(DataSet)
     this.setState( { currentLocation: this.state.currentLocation,
                       weather : this.state.weather  })
