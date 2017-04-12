@@ -10,7 +10,7 @@ export default class App extends Component {
     super()
     this.state = {
       url : `http://api.wunderground.com/api/${keys.johnKey}/forecast/q/CO/Denver.json`,
-      currentLocation : '',
+      currentLocation : 'CO/Denver',
       weather: []
     }
   }
@@ -62,4 +62,10 @@ export default class App extends Component {
     )
 
   }
+}
+
+//we want denver, co || denver co || denver colorado to return co/denver
+
+let inputScrub = (input) => {
+  input.split(' ').reverse().join('/')
 }
