@@ -17,7 +17,7 @@ export default class App extends Component {
     this.state.currentLocation = city
     this.scrubDataTenDay(DataSet)
     this.setState( { currentLocation: this.state.currentLocation,
-                      weather : this.state.weather  })
+                     weather : this.state.weather  })
 
                       console.log(this.state)
 
