@@ -4,19 +4,27 @@ export default class Input extends Component {
   constructor() {
     super();
     this.state = {
-      input: '',
-      language: 'EN'
+      location: '',
+      // language: 'EN'
     }
   }
+
+  submitLocation() {
+    let newLocation = this.state.location
+    this.props.handleClick(newLocation)
+    this.setState({location: newLocation})
+  }
+
   render() {
     return (
       <nav>
         <h1>Weatherly</h1>
         <input placeholder="Select a City" value={this.state.input} onChange={ (e) => {
-          this.setState( { input: e.target.value } ) 
+          this.setState( { location: e.target.value } )
         }}>
         </input>
-        <button >
+
+        <button onClick={this.submitLocation.bind(this)}>
           Save
         </button>
         <select>
