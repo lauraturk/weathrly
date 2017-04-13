@@ -17,37 +17,59 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    let location = localStorage.getItem('city') || 'please enter a location'
+    // let location = localStorage.getItem('city') || 'please enter a location'
     // this.handleClick(location)
-    this.setState({currentLocation: location ? location : ''}, () => {
-      this.setState({weather: this.handleClick()})
+    let location = this.state.currentLocation
+    this.setState({
+      currentLocation: location ? location : ''
+    }, () => {
+      if (location !== 'please enter a location') {
+        this.setState({weather: this.handleClick(location)})
+      }
     })
-    console.log(this.state)
+    // console.log(this.state)
   }
 
-  handleClick() {
-    localStorage.setItem('city', this.state.currentLocation.toLowerCase())
-    this.state.url = `http://api.wunderground.com/api/${keys.johnKey}/forecast10day/q/${this.state.currentLocation}.json`
-    $.get(this.state.url).then( () => {
-      this.scrubDataTenDay(happydays)
+  handleClick(input) {
+    this.setState({
+      currentLocation: input
     })
-      this.setState( { url: this.state.url,
-                      currentLocation: this.state.currentLocation
-                      } )
-
+    var url = `http://api.wunderground.com/api/${keys.johnKey}/forecast10day/q/${input}.json`
+    // console.log(url);
+    $.get(url).then( (happyDays) => {
+      this.scrubDataTenDay(happyDays)
+      // localStorage.setItem('city', this.state.currentLocation.toLowerCase())
+    })
+    this.setState( {
+      url,
+      // currentLocation: this.state.currentLocation
+    } )
   }
 
 
 
   scrubDataTenDay(data) {
     let scrubbedData = data.forecast.simpleforecast.forecastday.map( (day, index) => {
-      let dayObj = { date : day.date.pretty, high: day.high.fahrenheit, low: day.low.fahrenheit, condition: day.conditions, icon: day.icon_url}
-       return dayObj
+      let dayObj = {
+        date: day.date.pretty,
+        high: day.high.fahrenheit,
+        low: day.low.fahrenheit,
+        condition: day.conditions,
+        icon: day.icon_url
+      }
+
+      return dayObj
     })
-    this.state.weather = scrubbedData
-    this.setState({
-        weather: this.state.weather
-    })
+    console.log(scrubbedData);
+    // this.state.weather = scrubbedData
+    if(scrubbedData.length) {
+      this.setState({
+        weather: scrubbedData
+      })
+    } else {
+      alert('enter a real place')
+    }
+    console.log(this.state, ' state')
     // return this.state
     // debugger;
   }
