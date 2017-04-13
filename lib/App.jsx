@@ -28,12 +28,13 @@ export default class App extends Component {
   handleClick() {
     localStorage.setItem('city', this.state.currentLocation.toLowerCase())
     this.state.url = `http://api.wunderground.com/api/${keys.johnKey}/forecast10day/q/${this.state.currentLocation}.json`
-    $.get(this.state.url).then((happydays) => {
+    $.get(this.state.url).then( () => {
+      this.scrubDataTenDay(happydays)
+    })
       this.setState( { url: this.state.url,
-                      currentLocation: this.state.currentLocation,
-                      weather: this.scrubDataTenDay(happydays)
+                      currentLocation: this.state.currentLocation
                       } )
-      })
+
   }
 
 
