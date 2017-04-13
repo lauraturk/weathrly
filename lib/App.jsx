@@ -17,40 +17,22 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    // let location = localStorage.getItem('city') || 'please enter a location'
-    // this.handleClick(location)
     let theCity = localStorage.getItem('city')
-    // let location = this.state.currentLocation
-    this.setState({
-      currentLocation: theCity ? theCity : ''
-    }, () => {
-      if (theCity !== 'please enter a location') {
-        this.setState({weather: this.handleClick(theCity)})
-      }
-    })
-    // console.log(this.state)
+
+    this.handleClick(theCity)
   }
 
   handleClick(input) {
-    localStorage.setItem('city', input)
-    this.setState({
-      currentLocation: input
-    })
     var url = `http://api.wunderground.com/api/${keys.johnKey}/forecast10day/q/${input}.json`
-    // console.log(url);
+
     $.get(url).then( (happyDays) => {
-      this.scrubDataTenDay(happyDays)
-      // localStorage.setItem('city', this.state.currentLocation.toLowerCase())
+      this.scrubDataTenDay(happyDays, url, input)
     })
-    this.setState( {
-      url,
-      // currentLocation: this.state.currentLocation
-    } )
   }
 
 
 
-  scrubDataTenDay(data) {
+  scrubDataTenDay(data, url, input) {
     let scrubbedData = data.forecast.simpleforecast.forecastday.map( (day, index) => {
       let dayObj = {
         date: day.date.pretty,
@@ -62,18 +44,15 @@ export default class App extends Component {
 
       return dayObj
     })
-    console.log(scrubbedData);
-    // this.state.weather = scrubbedData
     if(scrubbedData.length) {
       this.setState({
+        url,
+        currentLocation: input,
         weather: scrubbedData
       })
     } else {
       alert('enter a real place')
     }
-    console.log(this.state, ' state')
-    // return this.state
-    // debugger;
   }
 
 
