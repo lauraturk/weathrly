@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Input from './Input'
+import TenDay from './TenDay'
 // import DataSet from './api.js'
 import Scrubber from './Scrubber'
 import keys from '../keys'
@@ -55,16 +56,11 @@ export default class App extends Component {
     }
   }
 
-
-
   render() {
     return (
       <div id="page-wrapper">
         {<Input handleClick={this.handleClick.bind(this)} /> }
-        <div>
-        </div>
-        <div>
-        </div>
+        {<TenDay weather={this.state.weather} />}
       </div>
     )
 

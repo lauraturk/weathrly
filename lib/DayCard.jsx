@@ -1,9 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class DayCard extends Component {
-  render() {
-    return (
-      <div></div>
-    );
-  }
+const DayCard = ({date, condition, high, low, icon}) => {
+  return (
+    <section>
+      <h4>{date}</h4>
+      <img src={icon}/>
+      <h4>{condition}</h4>
+      <h4>{high}</h4>
+      <h4>{low}</h4>
+    </section>
+  )
 }
+
+export default DayCard;
