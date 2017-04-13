@@ -19,18 +19,20 @@ export default class App extends Component {
   componentDidMount() {
     // let location = localStorage.getItem('city') || 'please enter a location'
     // this.handleClick(location)
-    let location = this.state.currentLocation
+    let theCity = localStorage.getItem('city')
+    // let location = this.state.currentLocation
     this.setState({
-      currentLocation: location ? location : ''
+      currentLocation: theCity ? theCity : ''
     }, () => {
-      if (location !== 'please enter a location') {
-        this.setState({weather: this.handleClick(location)})
+      if (theCity !== 'please enter a location') {
+        this.setState({weather: this.handleClick(theCity)})
       }
     })
     // console.log(this.state)
   }
 
   handleClick(input) {
+    localStorage.setItem('city', input)
     this.setState({
       currentLocation: input
     })
