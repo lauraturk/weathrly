@@ -11,6 +11,8 @@ export default class Input extends Component {
 
   submitLocation() {
     let newLocation = this.state.location
+    
+    localStorage.setItem('city', newLocation)
     this.props.handleClick(newLocation)
     this.setState({location: newLocation})
   }
