@@ -1,43 +1,42 @@
 import React, { Component } from 'react'
 import Input from './Input'
-import DataSet from './api.js'
+// import DataSet from './api.js'
 import Scrubber from './Scrubber'
 import keys from '../keys'
+import * as $ from 'jquery'
 
 
 export default class App extends Component {
   constructor() {
     super()
     this.state = {
-      url : `http://api.wunderground.com/api/${keys.johnKey}/forecast/q/CO/Denver.json`,
-      currentLocation : 'CO/Denver',
+      url : ``,
+      currentLocation : '',
       weather: []
     }
   }
 
   componentDidMount() {
-    // $.
-    let location = localStorage.getItem('city')
-    this.setState({currentLocation: location ? location : ''}, ()=> {
-      this.setState({weather: this.handleClick(location)})
-      console.log(this.state)
+    let location = localStorage.getItem('city') || 'please enter a location'
+    // this.handleClick(location)
+    this.setState({currentLocation: location ? location : ''}, () => {
+      this.setState({weather: this.handleClick()})
     })
+    console.log(this.state)
   }
 
-  handleClick(city) {
-    this.state.currentLocation = city
-    localStorage.setItem('city', city.toLowerCase())
-    this.scrubDataTenDay(DataSet)
-    this.setState( { currentLocation: this.state.currentLocation,
-                     weather : this.state.weather  })
-
-                      console.log(this.state)
-
+  handleClick() {
+    localStorage.setItem('city', this.state.currentLocation.toLowerCase())
+    this.state.url = `http://api.wunderground.com/api/${keys.johnKey}/forecast10day/q/${this.state.currentLocation}.json`
+    $.get(this.state.url).then((happydays) => {
+      this.setState( { url: this.state.url,
+                      currentLocation: this.state.currentLocation,
+                      weather: this.scrubDataTenDay(happydays)
+                      } )
+      })
   }
 
-  displayData(data) {
-    // console.log(data)
-  }
+
 
   scrubDataTenDay(data) {
     let scrubbedData = data.forecast.simpleforecast.forecastday.map( (day, index) => {
@@ -45,16 +44,20 @@ export default class App extends Component {
        return dayObj
     })
     this.state.weather = scrubbedData
+    this.setState({
+        weather: this.state.weather
+    })
+    // return this.state
+    // debugger;
   }
 
-  // <Input {displayData(DataSet)} />
+
 
   render() {
     return (
       <div id="page-wrapper">
         {<Input handleClick={this.handleClick.bind(this)} /> }
         <div>
-          {this.displayData(DataSet)}
         </div>
         <div>
         </div>
@@ -62,10 +65,4 @@ export default class App extends Component {
     )
 
   }
-}
-
-//we want denver, co || denver co || denver colorado to return co/denver
-
-let inputScrub = (input) => {
-  input.split(' ').reverse().join('/')
 }
