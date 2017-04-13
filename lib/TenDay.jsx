@@ -10,7 +10,7 @@ const TenDay = ({ weather }) =>    {
       <div>
         {weather.map((day) => {
           return (
-            <div>
+            <div key={day.date}>
               <DayCard
                 date = {day.date}
                 condition = {day.condition}
