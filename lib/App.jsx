@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import Input from './Input'
 import TenDay from './TenDay'
 import Conditions from './Conditions'
-// import DataSet from './api.js'
-// import Scrubber from './Scrubber'
 import keys from '../keys'
 import * as $ from 'jquery'
 import scrubData from './scrubData'
+import Hourly from './Hourly'
 
 
 export default class App extends Component {
@@ -46,6 +45,7 @@ export default class App extends Component {
       <div id="page-wrapper">
         <Input handleClick={this.handleClick.bind(this)} />
         <Conditions conditions={this.state.conditions} />
+        <Hourly hourly={this.state.hourly} />
         <TenDay tenDayWeather={this.state.tenDayWeather} />
       </div>
     )
