@@ -8,9 +8,9 @@ const Hourly = ({ hourly }) =>    {
     <section id="hourly">
       <h3>Hourly Forecast</h3>
       <div>
-        {hourly.map((hour) => {
+        {hourly.map((hour, i) => {
           return (
-            <div key={hour.time}>
+            <div key={hour.time + i}>
               <HourCard
                 hour = {hour.time}
                 condition = {hour.condition}

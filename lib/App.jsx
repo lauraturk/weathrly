@@ -6,6 +6,7 @@ import keys from '../keys'
 import * as $ from 'jquery'
 import scrubData from './scrubData'
 import Hourly from './Hourly'
+import conditionStyles from './conditionStyles'
 
 
 export default class App extends Component {
@@ -31,6 +32,9 @@ export default class App extends Component {
 
     $.get(url).then( (dataResponse) => {
       this.setState(scrubData(dataResponse))
+      }).then(() => {
+        // console.log(this.state.conditions.status)
+        conditionStyles(this.state.conditions)
     })
     this.setState({
       url,
