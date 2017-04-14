@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as $ from 'jquery'
 
 export default class Input extends Component {
   constructor() {
@@ -17,8 +18,11 @@ export default class Input extends Component {
     this.setState({location: newLocation})
   }
 
-  cleanInput(input) {
-    return input.split(' ').reverse().join(' ').replace(/,/gi, '').replace(/\s/g, '/')
+  autoComplete(input) {
+    $.get(`http://autocomplete.wunderground.com/aq?query=${input}`).then( (dataResponse) => {
+      console.log(dataResponse)
+      return dataResponse.l
+    })
   }
 
   render() {
@@ -31,7 +35,7 @@ export default class Input extends Component {
             value={this.state.input}
             onChange={ (e) => {
               this.setState( {
-                location: this.cleanInput(e.target.value)
+                location: this.autoComplete(e.target.value)
               } )
           }}>
           </input>
