@@ -3,12 +3,12 @@ import DayCard from './DayCard'
 
 
 
-const TenDay = ({ weather }) =>    {
+const TenDay = ({ tenDayWeather }) =>    {
   return (
     <section id="ten-day">
       <h3>Ten Day Forecast</h3>
       <div>
-        {weather.map((day) => {
+        {tenDayWeather.map((day) => {
           return (
             <div key={day.date}>
               <DayCard
