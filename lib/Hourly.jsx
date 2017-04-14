@@ -1,9 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
+import HourCard from './HourCard'
 
-export default class Hourly extends Component {
-  render() {
-    return (
-      <div></div>
-    );
-  }
+
+
+const Hourly = ({ hourly }) =>    {
+  return (
+    <section id="hourly">
+      <h3>Hourly Forecast</h3>
+      <div>
+        {hourly.map((hour) => {
+          return (
+            <div key={hour.time}>
+              <HourCard
+                hour = {hour.time}
+                condition = {hour.condition}
+                temp = {hour.tempE}
+                // low = {hour.low}
+                icon = {hour.icon}
+              />
+            </div>
+          )
+        })}
+      </div>
+    </section>
+  )
+
 }
+
+export default Hourly;
