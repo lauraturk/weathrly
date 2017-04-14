@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class HourCard extends Component {
-  render() {
+export default function HourCard  ({}) {
     return (
-      <div></div>
+      <div>
+
+        
+      </div>
     );
   }
 }
