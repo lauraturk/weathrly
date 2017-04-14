@@ -11,7 +11,7 @@ export default class Input extends Component {
 
   submitLocation() {
     let newLocation = this.state.location
-    
+
     localStorage.setItem('city', newLocation)
     this.props.handleClick(newLocation)
     this.setState({location: newLocation})
@@ -25,19 +25,26 @@ export default class Input extends Component {
     return (
       <nav>
         <h1>Weatherly</h1>
-        <input placeholder="Denver, CO" value={this.state.input} onChange={ (e) => {
-          this.setState( { location: this.cleanInput(e.target.value) } )
-        }}>
-        </input>
+        <article>
+          <input
+            placeholder="Select Location"
+            value={this.state.input}
+            onChange={ (e) => {
+              this.setState( {
+                location: this.cleanInput(e.target.value)
+              } )
+          }}>
+          </input>
 
-        <button onClick={this.submitLocation.bind(this)}>
-          Save
-        </button>
-        <select>
-          <option value="language1">language1</option>
-          <option value="language2">language2</option>
-          <option value="language3">language3</option>
-        </select>
+          <button onClick={this.submitLocation.bind(this)}>
+            Save
+          </button>
+          <select>
+            <option value="language1">language1</option>
+            <option value="language2">language2</option>
+            <option value="language3">language3</option>
+          </select>
+        </article>
       </nav>
     );
   }

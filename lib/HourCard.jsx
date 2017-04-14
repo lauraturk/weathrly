@@ -2,11 +2,11 @@ import React from 'react';
 
 const HourCard = ({hour, condition, temp, icon}) => {
   return (
-    <section>
-      <h4>{hour}</h4>
-      <img src={icon}/>
-      <h4>{condition}</h4>
-      <h4>{temp}</h4>
+    <section className="hour-card">
+      <h4 className="hour-card-hour">{hour}</h4>
+      <img className="hour-card-img" src={icon}/>
+      <h4 className="hour-card-condition">{condition}</h4>
+      <h4 className="hour-card-temp">{temp}</h4>
     </section>
   )
 }
