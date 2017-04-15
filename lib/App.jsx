@@ -22,17 +22,18 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    let theCity = localStorage.getItem('city')
+    let theCity = JSON.parse(localStorage.getItem('city'))
 
-    theCity && this.handleClick(theCity)
+    theCity && this.handleClick(theCity.url, this.state.language)
   }
 
-  handleClick(input) {
-    var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/q/${input}.json`
+  handleClick(input, language) {
+    var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`
 
     $.get(url).then( (dataResponse) => {
       this.setState(scrubData(dataResponse))
       }).then(() => {
+
         conditionStyles(this.state.conditions)
     })
     this.setState({
