@@ -1,24 +1,35 @@
 import React, { Component } from 'react';
+import * as $ from 'jquery'
 
 export default class Input extends Component {
   constructor() {
     super();
     this.state = {
-      location: ''
+      location: '',
+      apiLocationSuggestion: {},
+      language: 'EN'
       }
     }
 
 
   submitLocation() {
-    let newLocation = this.state.location
+    let newLocation = this.state.apiLocationSuggestion
 
-    localStorage.setItem('city', newLocation)
-    this.props.handleClick(newLocation)
-    this.setState({location: newLocation})
+    this.setState({
+      location: newLocation
+    })
+
+    localStorage.setItem('city', JSON.stringify(newLocation))
+    this.props.handleClick(newLocation.url, this.state.language)
   }
 
-  cleanInput(input) {
-    return input.split(' ').reverse().join(' ').replace(/,/gi, '').replace(/\s/g, '/')
+  autoComplete(input) {
+    $.getJSON(`http://autocomplete.wunderground.com/aq?query=${input}`).then( (dataResponse) => {
+      this.state.apiLocationSuggestion = { url: dataResponse.RESULTS[0].l, name: dataResponse.RESULTS[0].name }
+      this.setState({
+        apiLocationSuggestion: this.state.apiLocationSuggestion
+      })
+    })
   }
 
   render() {
@@ -27,22 +38,26 @@ export default class Input extends Component {
         <h1>Weatherly</h1>
         <article>
           <input
-            placeholder="Select Location"
-            value={this.state.input}
+            placeholder=  "City, State"
             onChange={ (e) => {
               this.setState( {
-                location: this.cleanInput(e.target.value)
+                location: this.autoComplete(e.target.value)
               } )
-          }}>
+            }}>
           </input>
 
           <button onClick={this.submitLocation.bind(this)}>
             Save
           </button>
-          <select>
-            <option value="language1">language1</option>
-            <option value="language2">language2</option>
-            <option value="language3">language3</option>
+          <select onChange= {(e) => {
+            this.setState( {
+              language: e.target.value
+            } )
+          }}>
+            <option value="EN">English</option>
+            <option value="SP">Espanol</option>
+            <option value="FR">Francais</option>
+            <option value="DL">Deutsch</option>
           </select>
         </article>
       </nav>
