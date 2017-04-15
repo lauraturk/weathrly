@@ -33,7 +33,6 @@ export default class App extends Component {
     $.get(url).then( (dataResponse) => {
       this.setState(scrubData(dataResponse))
       }).then(() => {
-        // console.log(this.state.conditions.status)
         conditionStyles(this.state.conditions)
     })
     this.setState({
