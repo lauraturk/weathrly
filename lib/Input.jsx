@@ -5,7 +5,8 @@ export default class Input extends Component {
   constructor() {
     super();
     this.state = {
-      location: ''
+      location: '',
+      apiLocation: ''
       }
     }
 
@@ -19,9 +20,14 @@ export default class Input extends Component {
   }
 
   autoComplete(input) {
-    $.get(`http://autocomplete.wunderground.com/aq?query=${input}`).then( (dataResponse) => {
-      console.log(dataResponse)
-      return dataResponse.l
+    $.getJSON(`http://autocomplete.wunderground.com/aq?query=${input}`).then( (dataResponse) => {
+      // console.log(dataResponse)
+      let apiResponse = dataResponse.RESULTS.length === 1 && dataResponse.RESULTS[0].l
+      this.state.apiLocation = apiResponse
+      // return dataResponse.RESULTS.length === 1 && dataResponse.RESULTS[0].l
+    return this.setState({
+        location: this.state.apiLocation
+      })
     })
   }
 
@@ -37,6 +43,7 @@ export default class Input extends Component {
               this.setState( {
                 location: this.autoComplete(e.target.value)
               } )
+              console.log(this.state.location + ' state location')
           }}>
           </input>
 

@@ -28,7 +28,7 @@ export default class App extends Component {
   }
 
   handleClick(input) {
-    var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/q/${input}.json`
+    var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/${input}.json`
 
     $.get(url).then( (dataResponse) => {
       this.setState(scrubData(dataResponse))
