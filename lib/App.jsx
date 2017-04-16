@@ -29,18 +29,19 @@ export default class App extends Component {
 
   handleClick(input, language) {
     var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`
-
+    console.log(this.state, ' first ')
     $.get(url).then( (dataResponse) => {
       console.log(dataResponse)
       this.setState(scrubData(dataResponse))
       }).then(() => {
-
+        console.log(this.state)
         conditionStyles(this.state.conditions)
     })
     this.setState({
       url,
       currentLocation: input
     })
+
   }
 
 
