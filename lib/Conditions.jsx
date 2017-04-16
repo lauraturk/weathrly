@@ -1,9 +1,6 @@
 import React from 'react';
 import conditionStyles from './conditionStyles'
 
-/* <div className='hidden'>{conditionStyles(conditions )}</div> */
-/* <div>{console.log(conditions, ' trial')}</div> */
-
 export default function Conditions ({conditions})  {
   return (
     <div className="conditions">

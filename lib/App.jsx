@@ -6,6 +6,7 @@ import keys from '../keys'
 import * as $ from 'jquery'
 import scrubData from './scrubData'
 import Hourly from './Hourly'
+import CurrentForecast from './CurrentForecast'
 import conditionStyles from './conditionStyles'
 
 
@@ -52,6 +53,7 @@ export default class App extends Component {
       <div id="page-wrapper">
         <Input handleClick={this.handleClick.bind(this)} />
         <Conditions conditions={this.state.conditions} />
+        <CurrentForecast currentForecast={this.state.currentForecast} />
         <Hourly hourly={this.state.hourly} />
         <TenDay tenDayWeather={this.state.tenDayWeather} />
       </div>
