@@ -17,7 +17,8 @@ export default class App extends Component {
       currentLocation : '',
       tenDayWeather: [],
       conditions: {},
-      hourly: []
+      hourly: [],
+      currentForecast: {}
     }
   }
 
