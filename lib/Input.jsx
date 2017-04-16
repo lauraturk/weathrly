@@ -35,7 +35,7 @@ export default class Input extends Component {
   render() {
     return (
       <nav>
-        <h1>Weatherly</h1>
+        <h1 className="weathrly">Weathrly</h1>
         <article>
           <input
             placeholder=  "City, State"
