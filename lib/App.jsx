@@ -6,6 +6,7 @@ import keys from '../keys'
 import * as $ from 'jquery'
 import scrubData from './scrubData'
 import Hourly from './Hourly'
+import CurrentForecast from './CurrentForecast'
 import conditionStyles from './conditionStyles'
 
 
@@ -17,7 +18,8 @@ export default class App extends Component {
       currentLocation : '',
       tenDayWeather: [],
       conditions: {},
-      hourly: []
+      hourly: [],
+      currentForecast: {}
     }
   }
 
@@ -29,17 +31,19 @@ export default class App extends Component {
 
   handleClick(input, language) {
     var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`
-
+    console.log(this.state, ' first ')
     $.get(url).then( (dataResponse) => {
+      console.log(dataResponse)
       this.setState(scrubData(dataResponse))
       }).then(() => {
-
+        console.log(this.state)
         conditionStyles(this.state.conditions)
     })
     this.setState({
       url,
       currentLocation: input
     })
+
   }
 
 
@@ -49,6 +53,7 @@ export default class App extends Component {
       <div id="page-wrapper">
         <Input handleClick={this.handleClick.bind(this)} />
         <Conditions conditions={this.state.conditions} />
+        <CurrentForecast currentForecast={this.state.currentForecast} />
         <Hourly hourly={this.state.hourly} />
         <TenDay tenDayWeather={this.state.tenDayWeather} />
       </div>
