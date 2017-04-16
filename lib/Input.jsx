@@ -35,9 +35,10 @@ export default class Input extends Component {
   render() {
     return (
       <nav>
-        <h1>Weatherly</h1>
-        <article>
+        <h1 className="weathrly">Weathrly</h1>
+        <article className="input-wrapper">
           <input
+            className="input-location"
             placeholder=  "City, State"
             onChange={ (e) => {
               this.setState( {
@@ -46,10 +47,14 @@ export default class Input extends Component {
             }}>
           </input>
 
-          <button onClick={this.submitLocation.bind(this)}>
+          <button
+            className="save"
+            onClick={this.submitLocation.bind(this)}>
             Save
           </button>
-          <select onChange= {(e) => {
+          <select
+            className="lang"
+            onChange= {(e) => {
             this.setState( {
               language: e.target.value
             } )

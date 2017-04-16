@@ -6,11 +6,11 @@ import DayCard from './DayCard'
 const TenDay = ({ tenDayWeather }) =>    {
   return (
     <section id="ten-day">
-      <h3>Ten Day Forecast</h3>
-      <div>
-        {tenDayWeather.map((day) => {
+        {tenDayWeather.map((day, i) => {
           return (
-            <div key={day.date}>
+            <div
+              className="ten-day-container"
+              key={day.date}>
               <DayCard
                 date = {day.date}
                 condition = {day.condition}
@@ -21,7 +21,6 @@ const TenDay = ({ tenDayWeather }) =>    {
             </div>
           )
         })}
-      </div>
     </section>
   )
 
