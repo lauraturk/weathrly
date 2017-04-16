@@ -6,7 +6,7 @@ import HourCard from './HourCard'
 const Hourly = ({ hourly }) =>    {
   return (
     <section id="hourly">
-      <h3>Hourly Forecast</h3>
+      
       <div>
         {hourly.map((hour, i) => {
           return (

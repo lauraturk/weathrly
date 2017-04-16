@@ -7,6 +7,15 @@
   flex-direction: column;
 }
 
+#video-background {
+  position: absolute;
+  z-index: -1;
+}
+
+.backdrop {
+  background: rgba(0, 0, 0, 0.32)
+}
+
 /*---nav---*/
 
 nav {
@@ -19,7 +28,9 @@ nav {
 /*---current---*/
 
 .conditions {
+  background-color: rgba(0, 0, 0, 0.35);
   margin-top: 5%;
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,11 +56,36 @@ nav {
 /*---hourly---*/
 
 #hourly {
-  width: 50%;
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  display: inline-block;
+  width: 20%;
+  height: 300px;
+  overflow-x: scroll;
+  overflow-y: auto;
   text-align: center;
 }
 
 .hour-card {
+  background-color: rgba(0, 0, 0, 0.35);
+  color: white;
   margin-top: 5%;
-  border: 1px solid green;
+}
+
+/*---ten day---*/
+
+#ten-day {
+  display: flex;
+  flex-direction: row;
+}
+
+.ten-day-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.day-card {
+  display: flex;
+  flex-direction: column;
 }

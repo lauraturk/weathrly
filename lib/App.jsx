@@ -31,6 +31,7 @@ export default class App extends Component {
     var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`
 
     $.get(url).then( (dataResponse) => {
+      console.log(dataResponse)
       this.setState(scrubData(dataResponse))
       }).then(() => {
 
