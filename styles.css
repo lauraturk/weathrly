@@ -1,5 +1,6 @@
 body {
-  background-size: 100%;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
 }
 
 .weathrly {
@@ -22,9 +23,6 @@ body {
   z-index: -1;
 }
 
-.backdrop {
-  background: rgba(0, 0, 0, 0.32)
-}
 
 /*---nav---*/
 
@@ -45,7 +43,7 @@ nav {
   left: 2.5%;
   width: 30%;
   height: 50%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
   display: flex;
   flex-direction: column;
@@ -84,7 +82,7 @@ nav {
 
 .hour-card {
   border-radius: 10%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
   margin-top: 5%;
   padding-top: 5%;
@@ -120,7 +118,20 @@ nav {
   border-radius: 10%;
   margin-left: 10px;
   padding: 5px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
   text-align: center;
+}
+
+.day-card-temps {
+  display: flex;
+  justify-content: space-around;
+}
+
+.day-card-high {
+  color: red;
+}
+
+.day-card-low {
+  color: dodgerblue;
 }
