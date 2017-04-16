@@ -28,8 +28,12 @@ nav {
 /*---current---*/
 
 .conditions {
+  position: absolute;
+  top: 70px;
+  left: 2.5%;
+  width: 30%;
+  height: 50%;
   background-color: rgba(0, 0, 0, 0.35);
-  margin-top: 5%;
   color: white;
   display: flex;
   flex-direction: column;
@@ -58,12 +62,11 @@ nav {
 #hourly {
   position: absolute;
   top: 70px;
-  right: 10px;
+  right: 2.5%;
   display: inline-block;
   width: 20%;
   height: 300px;
   overflow-x: scroll;
-  overflow-y: auto;
   text-align: center;
 }
 
@@ -78,14 +81,23 @@ nav {
 #ten-day {
   display: flex;
   flex-direction: row;
+  position: absolute;
+  left: 2.5%;
+  top: 70%;
+  overflow-x: scroll;
+  width: 95%;
+  white-space: nowrap;
+
 }
 
 .ten-day-container {
+  justify-content: space-around;
   display: flex;
   flex-direction: row;
 }
 
 .day-card {
-  display: flex;
-  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: white;
+  text-align: center;
 }
