@@ -5,10 +5,6 @@ import { expect } from 'chai'
 
 describe('Input: ', () => {
 
-  // beforeEach( () => {
-  //   returconst wrapper = shallow(<Input />)
-  // })
-
   it('should instantiate with a nav bar', () => {
     const wrapper = shallow(<Input />)
     expect(wrapper.is('nav')).to.equal(true)
@@ -22,15 +18,19 @@ describe('Input: ', () => {
     expect(wrapper.containsMatchingElement([<select></select>])).to.equal(true)
   })
 
-  it('should instantiate with an input, submit button, and drop down menu', () => {
+  it('should be able to be clicked once', () => {
     var mockFn = jest.fn()
+
+    window.localStorage = {
+      setItem () {}
+    }
 
     const wrapper = shallow(<Input handleClick={mockFn}/>)
 
     var button = wrapper.find('button')
     button.simulate('click')
 
-    expect(mockFn.mock.calls.length).to.be(1)
+    expect(mockFn.mock.calls.length).to.equal(1)
   })
 
   it('should instantiate w/ an empty location state', () => {
@@ -57,5 +57,31 @@ describe('Input: ', () => {
     expect(wrapper.state('language')).to.deep.equal('EN')
   })
 
+  it('should update language in State', () => {
+    const wrapper = shallow(<Input />)
+    let select = wrapper.find('.lang')
+
+    select.simulate('change', { target : { value : 'SP'}})
+
+    expect(wrapper.state('language')).to.deep.equal('SP')
+  })
+
+  it('should update location in State', () => {
+    const wrapper = shallow(<Input />)
+    let input = wrapper.find('input')
+    let button = wrapper.find('button')
+    let dataResponse = {
+      url: '/q/zmw:80201.1.99999',
+      name: 'Denver, CO'
+      }
+      console.log(input.simulate('change',{ target : { value : 'Denver, CO'}}))
+    input.simulate('change', { target : { value : 'Denver, CO'}})
+    button.simulate('click')
+
+    expect(wrapper.state('location')).to.deep.equal({
+      url: '/q/zmw:80201.1.99999',
+      name: 'Denver, CO'
+    })
+  })
 
 })
