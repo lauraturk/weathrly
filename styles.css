@@ -190,7 +190,7 @@ nav {
     left: 2.5%;
     overflow-x: scroll;
     position: absolute;
-    top: 63%;
+    top: 60%;
     white-space: nowrap;
     width: 95%;
   }
@@ -215,7 +215,7 @@ nav {
   }
 
   #ten-day {
-    top: 84%;
+    top: 80%;
   }
 }
 

@@ -33,11 +33,15 @@ export default class App extends Component {
     var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`
     console.log(this.state, ' first ')
     $.get(url).then( (dataResponse) => {
-      console.log(dataResponse)
+      console.log(dataResponse, ' dataResponse')
       this.setState(scrubData(dataResponse))
       }).then(() => {
-        console.log(this.state)
         conditionStyles(this.state.conditions)
+    }).catch(() => {
+      console.log(this.state, ' if')
+
+      alert('please select a valid location')
+
     })
     this.setState({
       url,
