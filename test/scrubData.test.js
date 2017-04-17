@@ -24,14 +24,6 @@ describe('scrubData: ', () => {
     })
   })
 
-
-  it.skip('should return the day for each ten day', () => {
-    let tenDay = scrubData(dataResponse).tenDayWeather
-    tenDay.forEach( (day, index) => {
-      expect(day.date).to.deep.equal(dataResponse.forecast.simpleforecast.forecastday[index].high.fahrenheit)
-    })
-  })
-
   it('should return current conditions', () => {
     let currentConditions = scrubData(dataResponse).conditions
 

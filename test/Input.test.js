@@ -63,22 +63,4 @@ describe('Input: ', () => {
 
     expect(wrapper.state('language')).to.deep.equal('SP')
   })
-
-  it.skip('should update location in State', () => {
-    const wrapper = shallow(<Input />)
-    let input = wrapper.find('input')
-    let button = wrapper.find('button')
-    let dataResponse = {
-      url: '/q/zmw:80201.1.99999',
-      name: 'Denver, CO'
-      }
-    input.simulate('change', { target : { value : 'Denver, CO'}})
-    button.simulate('click')
-
-    expect(wrapper.state('location')).to.deep.equal({
-      url: '/q/zmw:80201.1.99999',
-      name: 'Denver, CO'
-    })
-  })
-
 })
