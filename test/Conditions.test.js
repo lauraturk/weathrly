@@ -3,7 +3,7 @@ import Conditions from '../lib/Conditions'
 import React from 'react'
 
 
-describe('Conditions', () => {
+describe.skip('Conditions', () => {
   const conditions = {
     status: 'sunny',
     location: 'the future',

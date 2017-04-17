@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack.js",
-    "test":  "jest"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "sass-loader": "^3.2.0",
+    "sinon": "^2.1.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
