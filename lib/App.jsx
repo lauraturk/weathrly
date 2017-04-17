@@ -26,28 +26,41 @@ export default class App extends Component {
   componentDidMount() {
     let theCity = JSON.parse(localStorage.getItem('city'))
 
-    theCity && this.handleClick(theCity.url, this.state.language)
+    theCity && this.loadInfo(theCity.url, this.state.language)
   }
 
   handleClick(input, language) {
     var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`
-    console.log(this.state, ' first ')
-    $.get(url).then( (dataResponse) => {
-      console.log(dataResponse, ' dataResponse')
-      this.setState(scrubData(dataResponse))
-      }).then(() => {
-        conditionStyles(this.state.conditions)
-    }).catch(() => {
-      console.log(this.state, ' if')
 
+    this.getInfo(input, language).catch(() => {
       alert('please select a valid location')
-
     })
     this.setState({
       url,
       currentLocation: input
     })
+  }
 
+  getInfo(input, language) {
+    var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`
+    var weather = $.get(url).then( (dataResponse) => {
+      console.log(dataResponse, ' dataResponse')
+      this.setState(scrubData(dataResponse))
+      }).then(() => {
+        conditionStyles(this.state.conditions)
+    })
+    
+    return weather
+  }
+
+  loadInfo(input, language) {
+    var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`
+
+    this.getInfo(input, language)
+    this.setState({
+      url,
+      currentLocation: input
+    })
   }
 
 
