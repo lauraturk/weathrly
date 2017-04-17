@@ -43,7 +43,7 @@ nav {
 .conditions {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 10%;
+  border-radius: 25px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -82,7 +82,7 @@ nav {
 .current-forecast {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 10%;
+  border-radius: 25px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -205,8 +205,6 @@ nav {
   }
 
   .current-forecast {
-    left: auto;
-    right: 2.5%;
     width: 55%;
   }
 
@@ -217,13 +215,12 @@ nav {
   #ten-day {
     top: 80%;
   }
-}
-
-@media screen and (max-width: 775px) {
 
   .current-forecast,
   .conditions {
-    width: 90%;
+    left: auto;
+    right: 2.5%;
+    width: 95%;
     height: 120px;
     display: flex;
     flex-direction: row;
@@ -271,6 +268,8 @@ nav {
   .weathrly {
     display: none;
   }
+}
 
+@media screen and (max-width: 480px) {
 
 }

@@ -1,8 +1,6 @@
 import React from 'react';
 import DayCard from './DayCard'
 
-
-
 const TenDay = ({ tenDayWeather }) =>    {
   return (
     <section id="ten-day">
@@ -23,7 +21,6 @@ const TenDay = ({ tenDayWeather }) =>    {
         })}
     </section>
   )
-
 }
 
 export default TenDay;

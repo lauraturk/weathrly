@@ -9,7 +9,6 @@ import Hourly from './Hourly'
 import CurrentForecast from './CurrentForecast'
 import conditionStyles from './conditionStyles'
 
-
 export default class App extends Component {
   constructor() {
     super()
@@ -49,7 +48,7 @@ export default class App extends Component {
       }).then(() => {
         conditionStyles(this.state.conditions)
     })
-    
+
     return weather
   }
 
@@ -62,8 +61,6 @@ export default class App extends Component {
       currentLocation: input
     })
   }
-
-
 
   render() {
     return (
