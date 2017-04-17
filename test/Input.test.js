@@ -2,11 +2,14 @@ import { shallow, mount, render } from 'enzyme'
 import Input from '../lib/Input'
 import React from 'react'
 import { expect } from 'chai'
+import localStorage from './localStorage.js'
+
 
 describe('Input: ', () => {
 
   it('should instantiate with a nav bar', () => {
     const wrapper = shallow(<Input />)
+
     expect(wrapper.is('nav')).to.equal(true)
   })
 
@@ -20,14 +23,9 @@ describe('Input: ', () => {
 
   it('should be able to be clicked once', () => {
     var mockFn = jest.fn()
-
-    window.localStorage = {
-      setItem () {}
-    }
-
     const wrapper = shallow(<Input handleClick={mockFn}/>)
-
     var button = wrapper.find('button')
+
     button.simulate('click')
 
     expect(mockFn.mock.calls.length).to.equal(1)
@@ -65,23 +63,4 @@ describe('Input: ', () => {
 
     expect(wrapper.state('language')).to.deep.equal('SP')
   })
-
-  it('should update location in State', () => {
-    const wrapper = shallow(<Input />)
-    let input = wrapper.find('input')
-    let button = wrapper.find('button')
-    let dataResponse = {
-      url: '/q/zmw:80201.1.99999',
-      name: 'Denver, CO'
-      }
-      console.log(input.simulate('change',{ target : { value : 'Denver, CO'}}))
-    input.simulate('change', { target : { value : 'Denver, CO'}})
-    button.simulate('click')
-
-    expect(wrapper.state('location')).to.deep.equal({
-      url: '/q/zmw:80201.1.99999',
-      name: 'Denver, CO'
-    })
-  })
-
 })
