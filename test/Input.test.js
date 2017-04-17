@@ -23,11 +23,14 @@ describe('Input: ', () => {
   })
 
   it('should instantiate with an input, submit button, and drop down menu', () => {
-    const wrapper = shallow(<Input />)
+    var mockFn = jest.fn()
 
-    expect(wrapper.containsMatchingElement([<input></input>])).to.equal(true)
-    expect(wrapper.containsMatchingElement([<button></button>])).to.equal(true)
-    expect(wrapper.containsMatchingElement([<select></select>])).to.equal(true)
+    const wrapper = shallow(<Input handleClick={mockFn}/>)
+
+    var button = wrapper.find('button')
+    button.simulate('click')
+
+    expect(mockFn.mock.calls.length).to.be(1)
   })
 
   it('should instantiate w/ an empty location state', () => {
@@ -54,5 +57,5 @@ describe('Input: ', () => {
     expect(wrapper.state('language')).to.deep.equal('EN')
   })
 
-  
+
 })
