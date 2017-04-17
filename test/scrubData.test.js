@@ -17,6 +17,14 @@ describe('scrubData: ', () => {
     })
   })
 
+  it('should return the ten day forecast lows', () => {
+    let tenDay = scrubData(dataResponse).tenDayWeather
+    tenDay.forEach( (day, index) => {
+      expect(day.low).to.deep.equal(dataResponse.forecast.simpleforecast.forecastday[index].low.fahrenheit)
+    })
+  })
+
+
   it.skip('should return the day for each ten day', () => {
     let tenDay = scrubData(dataResponse).tenDayWeather
     tenDay.forEach( (day, index) => {
@@ -47,8 +55,5 @@ describe('scrubData: ', () => {
     let currentForecast = scrubData(dataResponse).currentForecast
 
     expect(currentForecast.high).to.deep.equal(dataResponse.forecast.simpleforecast.forecastday[0].high.fahrenheit)
-
   })
-
-
 })

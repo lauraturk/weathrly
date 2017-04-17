@@ -1,6 +1,14 @@
-// import { shallow, mount, render } from 'enzyme'
-// import React from 'react'
-//
+import { shallow, mount, render } from 'enzyme'
+import React from 'react'
+
+describe('index', () => {
+
+  it('should do something', () => {
+    expect(true)
+  })
+
+})
+
 // const importTest = (name, path) => {
 //     describe(name, () => {
 //         import (path);

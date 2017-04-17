@@ -24,20 +24,26 @@ export default class App extends Component {
 
   componentDidMount() {
     let theCity = JSON.parse(localStorage.getItem('city'))
-
-    theCity && this.loadInfo(theCity.url, this.state.language)
+    theCity && this.loadInfo(theCity, this.state.language)
   }
 
   handleClick(input, language) {
+
     var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`
 
     this.getInfo(input, language).catch(() => {
       alert('please select a valid location')
     })
+    localStorage.setItem('city', JSON.stringify(input))
+    this.setURL(url, input)
+  }
+
+    setURL(url, input){
     this.setState({
       url,
       currentLocation: input
     })
+
   }
 
   getInfo(input, language) {
@@ -56,10 +62,7 @@ export default class App extends Component {
     var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`
 
     this.getInfo(input, language)
-    this.setState({
-      url,
-      currentLocation: input
-    })
+    this.setURL(url, input)
   }
 
   render() {

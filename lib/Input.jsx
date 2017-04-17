@@ -19,7 +19,6 @@ export default class Input extends Component {
       location: newLocation
     })
 
-    localStorage.setItem('city', JSON.stringify(newLocation))
     this.props.handleClick(newLocation.url, this.state.language)
   }
 
