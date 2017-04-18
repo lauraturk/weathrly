@@ -24,7 +24,8 @@ export default class App extends Component {
 
   componentDidMount() {
     const theCity = JSON.parse(localStorage.getItem('city'));
-
+    document.body.style.backgroundImage = "url('../styles/pics/default_weather.jpeg')";
+    
     theCity && this.loadInfo(theCity, this.state.language);
   }
 
