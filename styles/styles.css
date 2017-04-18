@@ -18,7 +18,6 @@ button:hover {
   background-color: dodgerblue;
 }
 
-
 #page-wrapper {
   background-repeat: no-repeat;
   background-size: cover;
@@ -199,7 +198,6 @@ input, button, select {
   color: dodgerblue;
 }
 
-
 @media screen and (max-width: 893px) {
 
   nav {
@@ -248,7 +246,6 @@ input, button, select {
     padding: 5px;
   }
 
-
   #ten-day {
     top: 100%;
   }
@@ -256,27 +253,26 @@ input, button, select {
   .current-forecast,
   .conditions {
     left: 2.5%;
-    right: 2.5%;
-    width: 95%;
     display: flex;
     flex-direction: column;
-    /*justify-content: space-around;*/
     padding: 0;
+    right: 2.5%;
+    width: 95%;
   }
 
   .current-forecast{
     display: flex;
     height: 150px;
     justify-content: center;
-    top: 53%;
     padding: 5px;
+    top: 53%;
   }
 
   .current-forecast-forecast {
     font-size: 1em;
     line-height: 16pt;
-    text-align: center;
     margin: 5px;
+    text-align: center;
   }
 
   .current-forecast-date {
@@ -288,23 +284,23 @@ input, button, select {
   .current-forecast-high,
   .current-forecast-low,
   .current-forecast-date {
-    padding: 5px;
     margin: 0%;
+    padding: 5px;
   }
 
   .save,
   .lang {
-    padding: 2%;
     margin: 2%;
     margin-left: 4%;
+    padding: 2%;
   }
 
   .input-wrapper {
+    align-items: center;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    width: 100%;
     padding: 0 20%;
+    width: 100%;
   }
 
   .weathrly {
@@ -331,18 +327,16 @@ input, button, select {
   }
 
   .conditions {
-    margin: 0 auto;
     height: 200px;
+    margin: 0 auto;
     top: 18%;
     width: 290px;
-    /*right; auto;*/
   }
 
   .current-forecast{
     margin: 0 auto;
     top: 60%;
     width: 285px;
-    /*right: auto;*/
   }
 
   #hourly {
