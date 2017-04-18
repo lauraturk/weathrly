@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DayCard = ({date, condition, high, low, icon}) => {
+const DayCard = ({ date, condition, high, low, icon }) => {
   return (
     <section className="day-card">
       <h4 className="day-card-date">{date}</h4>
@@ -11,7 +11,7 @@ const DayCard = ({date, condition, high, low, icon}) => {
         <h4 className="day-card-low">{low}°</h4>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default DayCard;

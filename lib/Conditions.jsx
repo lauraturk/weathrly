@@ -1,7 +1,6 @@
 import React from 'react';
-import conditionStyles from './conditionStyles'
 
-export default function Conditions ({conditions})  {
+export default function Conditions({ conditions }) {
   return (
     <div className="conditions">
       <div className="condition-location">{conditions.location}</div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as $ from 'jquery'
+import * as $ from 'jquery';
 
 export default class Input extends Component {
   constructor() {
@@ -7,28 +7,29 @@ export default class Input extends Component {
     this.state = {
       location: '',
       apiLocationSuggestion: {},
-      language: 'EN'
-      }
-    }
-
+      language: 'EN',
+    };
+  }
 
   submitLocation() {
-    let newLocation = this.state.apiLocationSuggestion
+    const newLocation = this.state.apiLocationSuggestion;
 
     this.setState({
-      location: newLocation
-    })
+      location: newLocation,
+    });
 
-    this.props.handleClick(newLocation.url, this.state.language)
+    this.props.handleClick(newLocation.url, this.state.language);
   }
 
   autoComplete(input) {
-    $.getJSON(`http://autocomplete.wunderground.com/aq?query=${input}`).then( (dataResponse) => {
-      this.state.apiLocationSuggestion = { url: dataResponse.RESULTS[0].l, name: dataResponse.RESULTS[0].name }
+    $.getJSON(`http://autocomplete.wunderground.com/aq?query=${input}`).then((dataResponse) => {
+      this.state.apiLocationSuggestion = {
+        url: dataResponse.RESULTS[0].l,
+        name: dataResponse.RESULTS[0].name };
       this.setState({
-        apiLocationSuggestion: this.state.apiLocationSuggestion
-      })
-    })
+        apiLocationSuggestion: this.state.apiLocationSuggestion,
+      });
+    });
   }
 
   render() {
@@ -38,11 +39,11 @@ export default class Input extends Component {
         <article className="input-wrapper">
           <input
             className="input-location"
-            placeholder=  "City, State"
+            placeholder= "City, State"
             onChange={ (e) => {
-              this.setState( {
-                location: this.autoComplete(e.target.value)
-              } )
+              this.setState({
+                location: this.autoComplete(e.target.value),
+              });
             }}>
           </input>
 
@@ -54,10 +55,10 @@ export default class Input extends Component {
           <select
             className="lang"
             onChange= {(e) => {
-            this.setState( {
-              language: e.target.value
-            } )
-          }}>
+              this.setState({
+                language: e.target.value,
+              });
+            }}>
             <option value="EN">English</option>
             <option value="SP">Espanol</option>
             <option value="FR">Francais</option>
