@@ -1,10 +1,10 @@
 import React from 'react';
-import DayCard from './DayCard'
+import DayCard from './DayCard';
 
-const TenDay = ({ tenDayWeather }) =>    {
+const TenDay = ({ tenDayWeather }) => {
   return (
     <section id="ten-day">
-        {tenDayWeather.map((day, i) => {
+        {tenDayWeather.map((day) => {
           return (
             <div
               className="ten-day-container"
@@ -17,10 +17,10 @@ const TenDay = ({ tenDayWeather }) =>    {
                 icon = {day.icon}
               />
             </div>
-          )
+          );
         })}
     </section>
-  )
-}
+  );
+};
 
 export default TenDay;

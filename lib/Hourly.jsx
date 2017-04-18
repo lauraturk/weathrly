@@ -1,13 +1,9 @@
 import React from 'react';
-import HourCard from './HourCard'
+import HourCard from './HourCard';
 
-
-
-const Hourly = ({ hourly }) =>    {
+const Hourly = ({ hourly }) => {
   return (
     <section id="hourly">
-
-
         {hourly.map((hour, i) => {
           return (
             <div key={hour.time + i}>
@@ -19,12 +15,10 @@ const Hourly = ({ hourly }) =>    {
                 icon = {hour.icon}
               />
             </div>
-          )
+          );
         })}
-      
     </section>
-  )
-
-}
+  );
+};
 
 export default Hourly;

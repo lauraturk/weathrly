@@ -1,68 +1,66 @@
-import React, { Component } from 'react'
-import Input from './Input'
-import TenDay from './TenDay'
-import Conditions from './Conditions'
-import keys from '../keys'
-import * as $ from 'jquery'
-import scrubData from './scrubData'
-import Hourly from './Hourly'
-import CurrentForecast from './CurrentForecast'
-import conditionStyles from './conditionStyles'
+import React, { Component } from 'react';
+import Input from './Input';
+import TenDay from './TenDay';
+import Conditions from './Conditions';
+import keys from '../keys';
+import * as $ from 'jquery';
+import scrubData from './scrubData';
+import Hourly from './Hourly';
+import CurrentForecast from './CurrentForecast';
+import conditionStyles from './conditionStyles';
 
 export default class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      url : ``,
-      currentLocation : '',
+      url: '',
+      currentLocation: '',
       tenDayWeather: [],
       conditions: {},
       hourly: [],
-      currentForecast: {}
-    }
+      currentForecast: {},
+    };
   }
 
   componentDidMount() {
-    let theCity = JSON.parse(localStorage.getItem('city'))
-    theCity && this.loadInfo(theCity, this.state.language)
+    const theCity = JSON.parse(localStorage.getItem('city'));
+
+    theCity && this.loadInfo(theCity, this.state.language);
   }
 
   handleClick(input, language) {
-
-    var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`
+    const url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`;
 
     this.getInfo(input, language).catch(() => {
-      alert('please select a valid location')
-    })
-    localStorage.setItem('city', JSON.stringify(input))
-    this.setURL(url, input)
+      alert('please select a valid location');
+    });
+    localStorage.setItem('city', JSON.stringify(input));
+    this.setURL(url, input);
   }
 
-    setURL(url, input){
+  setURL(url, input) {
     this.setState({
       url,
-      currentLocation: input
-    })
-
+      currentLocation: input,
+    });
   }
 
   getInfo(input, language) {
-    var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`
-    var weather = $.get(url).then( (dataResponse) => {
-      console.log(dataResponse, ' dataResponse')
-      this.setState(scrubData(dataResponse))
-      }).then(() => {
-        conditionStyles(this.state.conditions)
-    })
+    const url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`;
+    const weather = $.get(url).then((dataResponse) => {
+      this.setState(scrubData(dataResponse));
+    }).then(() => {
+      conditionStyles(this.state.conditions);
+    });
 
-    return weather
+    return weather;
   }
 
   loadInfo(input, language) {
-    var url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`
+    const url = `http://api.wunderground.com/api/${keys.johnKey}/conditions/hourly/forecast10day/lang:${language}/${input}.json`;
 
-    this.getInfo(input, language)
-    this.setURL(url, input)
+    this.getInfo(input, language);
+    this.setURL(url, input);
   }
 
   render() {
@@ -74,24 +72,6 @@ export default class App extends Component {
         <Hourly hourly={this.state.hourly} />
         <TenDay tenDayWeather={this.state.tenDayWeather} />
       </div>
-    )
-
+    );
   }
 }
-
-
-// *** current
-//current_observation.display_location.full - location
-//weather - status(partly cloudy)
-//temp_f degrees fahrenheit
-//temp_c degrees celsius
-//icon_url - the icon
-
-
-// **** 7 hour
-//hourly_forecast is an array, we will map it
-//FCCTIME.civil = '5:00 pm'
-//temp.english = deg f
-//temp.metric = deg c
-//condition = "partly cloudy"
-//icon_url = the icon
