@@ -23,11 +23,6 @@ button:hover {
   flex-direction: column;
 }
 
-#video-background {
-  position: absolute;
-  z-index: -1;
-}
-
 /*---nav---*/
 
 nav {
@@ -36,6 +31,14 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+input, button, select {
+  box-sizing: border-box;
+  margin: 0 20px 0 10px;
+  width: 200px;
+  height: 30px;
+  font-size: 20;
 }
 
 /*---current---*/
@@ -182,7 +185,16 @@ nav {
 }
 
 
-@media screen and (max-width: 775px) {
+@media screen and (max-width: 852px) {
+
+  nav {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  input, button, select {
+    margin: 0 6% 0 6%;
+  }
 
   #hourly {
     display: flex;
@@ -270,6 +282,8 @@ nav {
   }
 }
 
-@media screen and (max-width: 480px) {
-
+@media screen and (max-width: 550px) {
+  input, button, select {
+    width: 80%;
+  }
 }
