@@ -18,12 +18,15 @@ button:hover {
   background-color: dodgerblue;
 }
 
+
 #page-wrapper {
+  background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
 }
+
 
 /*---nav---*/
 
@@ -252,7 +255,7 @@ input, button, select {
 
   .current-forecast,
   .conditions {
-    left: auto;
+    left: 2.5%;
     right: 2.5%;
     width: 95%;
     display: flex;
@@ -306,5 +309,47 @@ input, button, select {
 
   .weathrly {
     display: none;
+  }
+
+@media screen and (max-width: 350px) {
+
+  .condition-temp-f {
+    font-size: 3.5em;
+    padding: 1%;
+  }
+
+  .condition-location {
+    font-size: 1em;
+    padding: 1%;
+    text-align: center;
+  }
+
+  .condition-status {
+    font-size: .75em;
+    margin-top: 1%;
+    padding: 1%;
+  }
+
+  .conditions {
+    margin: 0 auto;
+    height: 200px;
+    top: 18%;
+    width: 290px;
+    /*right; auto;*/
+  }
+
+  .current-forecast{
+    margin: 0 auto;
+    top: 60%;
+    width: 285px;
+    /*right: auto;*/
+  }
+
+  #hourly {
+    top: 90%;
+  }
+
+  #ten-day {
+    top: 115%;
   }
 }
