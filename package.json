@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack",
+    "build": "./node_modules/webpack/bin/webpack.js",
     "test": "jest",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -"
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/turingschool-examples/react-starter-kit.git"
+    "url": "https://lauraturk.github.io/weathrly/"
   },
   "author": "Steve Kinney",
   "license": "MIT",

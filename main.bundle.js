@@ -8341,7 +8341,7 @@
 	  }, {
 	    key: 'handleClick',
 	    value: function handleClick(input, language) {
-	      var url = 'http://api.wunderground.com/api/2e519fe31304e9ee/conditions/hourly/forecast10day/lang:' + language + '/' + input + '.json';
+	      var url = 'https://api.wunderground.com/api/2e519fe31304e9ee/conditions/hourly/forecast10day/lang:' + language + '/' + input + '.json';
 
 	      this.getInfo(input, language).catch(function () {
 	        alert('please select a valid location');
@@ -8362,7 +8362,7 @@
 	    value: function getInfo(input, language) {
 	      var _this2 = this;
 
-	      var url = 'http://api.wunderground.com/api/' + _keys2.default.johnKey + '/conditions/hourly/forecast10day/lang:' + language + '/' + input + '.json';
+	      var url = 'https://api.wunderground.com/api/' + _keys2.default.johnKey + '/conditions/hourly/forecast10day/lang:' + language + '/' + input + '.json';
 	      var weather = $.get(url).then(function (dataResponse) {
 	        _this2.setState((0, _scrubData2.default)(dataResponse));
 	      }).then(function () {
@@ -8374,7 +8374,7 @@
 	  }, {
 	    key: 'loadInfo',
 	    value: function loadInfo(input, language) {
-	      var url = 'http://api.wunderground.com/api/' + _keys2.default.johnKey + '/conditions/hourly/forecast10day/lang:' + language + '/' + input + '.json';
+	      var url = 'https://api.wunderground.com/api/' + _keys2.default.johnKey + '/conditions/hourly/forecast10day/lang:' + language + '/' + input + '.json';
 
 	      this.getInfo(input, language);
 	      this.setURL(url, input);
@@ -12532,7 +12532,7 @@
 	    value: function autoComplete(input) {
 	      var _this2 = this;
 
-	      $.getJSON('http://autocomplete.wunderground.com/aq?cb=?&query=' + input).then(function (dataResponse) {
+	      $.getJSON('https//autocomplete.wunderground.com/aq?cb=?&query=' + input).then(function (dataResponse) {
 	        console.log(dataResponse.RESULTS[0].l, ' example');
 	        _this2.state.apiLocationSuggestion = {
 	          url: dataResponse.RESULTS[0].l,
