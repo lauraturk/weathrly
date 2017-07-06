@@ -35,6 +35,7 @@ export default class Input extends Component {
   }
 
   render() {
+    console.log('input js');
     return (
       <nav>
         <h1 className="weathrly">Weathrly</h1>
