@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -8242,9 +8242,12 @@
 
 	var React = __webpack_require__(300);
 	var ReactDOM = __webpack_require__(345);
+	// import App from './App';
 
 
 	ReactDOM.render(React.createElement(_App2.default, null), document.getElementById('root'));
+
+	console.log('index');
 
 /***/ },
 /* 299 */
@@ -12530,9 +12533,11 @@
 	      var _this2 = this;
 
 	      $.getJSON('http://autocomplete.wunderground.com/aq?cb=?&query=' + input).then(function (dataResponse) {
+	        console.log(dataResponse.RESULTS[0].l, ' example');
 	        _this2.state.apiLocationSuggestion = {
 	          url: dataResponse.RESULTS[0].l,
 	          name: dataResponse.RESULTS[0].name };
+	        console.log(dataResponse.RESULTS[0]);
 	        _this2.setState({
 	          apiLocationSuggestion: _this2.state.apiLocationSuggestion
 	        });
@@ -23023,7 +23028,7 @@
 
 	var keys = {
 	  johnKey: '2e519fe31304e9ee',
-	  lauraKey: ''
+	  lauraKey: 'ee65d95a405b2af'
 	};
 
 	module.exports = keys;

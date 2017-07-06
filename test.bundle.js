@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -8464,8 +8464,8 @@
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
-		module.hot.accept("!!/Users/lauraturk/Turing/mod2/weathrly/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/lauraturk/Turing/mod2/weathrly/node_modules/mocha/mocha.css", function() {
-			var newContent = require("!!/Users/lauraturk/Turing/mod2/weathrly/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/lauraturk/Turing/mod2/weathrly/node_modules/mocha/mocha.css");
+		module.hot.accept("!!/Users/johnbinning/turing/mod2/weathrly/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/johnbinning/turing/mod2/weathrly/node_modules/mocha/mocha.css", function() {
+			var newContent = require("!!/Users/johnbinning/turing/mod2/weathrly/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/johnbinning/turing/mod2/weathrly/node_modules/mocha/mocha.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});

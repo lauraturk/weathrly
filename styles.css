@@ -1,0 +1,349 @@
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.weathrly {
+  color: white;
+  font-family: 'Shrikhand', cursive;
+  font-size: 2.5em;
+  text-shadow: 0px 0 #B4B7C0 ,0 0px #B4B7C0 ,0 1.5px #000000 ,0 1.5px #000000;
+}
+
+.hidden {
+  display: none;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: dodgerblue;
+}
+
+#page-wrapper {
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+
+/*---nav---*/
+
+nav {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+input, button, select {
+  background-color: white;
+  border-radius: 5px;
+  border-style: none;
+  box-sizing: border-box;
+  margin: 0 20px 0 10px;
+  width: 200px;
+  height: 30px;
+
+}
+
+/*---current---*/
+
+.conditions {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 25px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  justify-content: center;
+  left: 2.5%;
+  position: absolute;
+  top: 70px;
+  width: 30%;
+}
+
+.condition-temp-f {
+  font-size: 4em;
+  padding: 5%;
+}
+
+.condition-location {
+  font-size: 2em;
+  padding: 5%;
+  text-align: center;
+}
+
+.condition-status {
+  font-size: 1.5em;
+  margin-top: 1%;
+  padding: 5%;
+}
+
+.condition-img {
+  min-width: 50px;
+  padding: 5%;
+  width: 15%;
+}
+
+/*---currentForecast---*/
+
+.current-forecast {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 25px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  left: 40%;
+  position: absolute;
+  top: 70px;
+  width: 30%;
+}
+
+.current-forecast-date {
+  font-size: 2em;
+  margin-top: 15%;
+}
+
+.current-forecast-high {
+  margin-right: 40%;
+}
+
+.current-forecast-temps {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.5em;
+  padding: 5%;
+}
+
+.current-forecast-forecast {
+  font-size: 1.2em;
+  line-height: 22pt;
+  margin-left: 5%;
+  padding: 5%;
+}
+
+/*---hourly---*/
+
+#hourly {
+  display: inline-block;
+  height: 340px;
+  overflow-x: scroll;
+  position: absolute;
+  right: 2.5%;
+  top: 70px;
+  text-align: center;
+}
+
+.hour-card {
+  border-radius: 10%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  margin-top: 5%;
+  padding: 10px;
+  width: 140px;
+}
+
+.hour-card-condition,
+.day-card-condition,
+.day-card-icon,
+.hour-card-img {
+  padding-bottom: 5px;
+}
+
+/*---ten day---*/
+
+#ten-day {
+  display: flex;
+  flex-direction: row;
+  left: 2.5%;
+  overflow-x: scroll;
+  position: absolute;
+  top: 70%;
+  white-space: nowrap;
+  width: 95%;
+}
+
+.ten-day-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.day-card {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10%;
+  color: white;
+  margin-left: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.day-card-temps {
+  display: flex;
+  justify-content: space-around;
+}
+
+.day-card-high,
+.current-forecast-high {
+  color: red;
+}
+
+.day-card-low,
+.current-forecast-low {
+  color: dodgerblue;
+}
+
+@media screen and (max-width: 893px) {
+
+  nav {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  input, button, select {
+    margin: 0 6% 0 6%;
+  }
+
+  #hourly {
+    display: flex;
+    flex-direction: row;
+    left: 2.5%;
+    overflow-x: scroll;
+    position: absolute;
+    top: 80%;
+    white-space: nowrap;
+    width: 95%;
+  }
+
+  .hour-card {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10%;
+    color: white;
+    margin-left: 10px;
+    padding: 5px;
+    text-align: center;
+  }
+
+  .current-forecast {
+    width: 55%;
+  }
+
+  .conditions{
+    width: 37%;
+    height: 240px;
+    top: 15%;
+  }
+
+  .condition-temp-f,
+  .condition-img,
+  .condition-status,
+  .condition-location {
+    padding: 5px;
+  }
+
+  #ten-day {
+    top: 100%;
+  }
+
+  .current-forecast,
+  .conditions {
+    left: 2.5%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    right: 2.5%;
+    width: 95%;
+  }
+
+  .current-forecast{
+    display: flex;
+    height: 150px;
+    justify-content: center;
+    padding: 5px;
+    top: 53%;
+  }
+
+  .current-forecast-forecast {
+    font-size: 1em;
+    line-height: 16pt;
+    margin: 5px;
+    text-align: center;
+  }
+
+  .current-forecast-date {
+    font-size: 1.2em;
+  }
+
+  .current-forecast-forecast,
+  .current-forecast-temps,
+  .current-forecast-high,
+  .current-forecast-low,
+  .current-forecast-date {
+    margin: 0%;
+    padding: 5px;
+  }
+
+  .save,
+  .lang {
+    margin: 2%;
+    margin-left: 4%;
+    padding: 2%;
+  }
+
+  .input-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    padding: 0 20%;
+    width: 100%;
+  }
+
+  .weathrly {
+    display: none;
+  }
+
+@media screen and (max-width: 350px) {
+
+  .condition-temp-f {
+    font-size: 3.5em;
+    padding: 1%;
+  }
+
+  .condition-location {
+    font-size: 1em;
+    padding: 1%;
+    text-align: center;
+  }
+
+  .condition-status {
+    font-size: .75em;
+    margin-top: 1%;
+    padding: 1%;
+  }
+
+  .conditions {
+    height: 200px;
+    margin: 0 auto;
+    top: 18%;
+    width: 290px;
+  }
+
+  .current-forecast{
+    margin: 0 auto;
+    top: 60%;
+    width: 285px;
+  }
+
+  #hourly {
+    top: 90%;
+  }
+
+  #ten-day {
+    top: 115%;
+  }
+}
