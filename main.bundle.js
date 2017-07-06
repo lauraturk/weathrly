@@ -8382,6 +8382,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log('app log');
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'page-wrapper' },
@@ -12548,6 +12549,7 @@
 	    value: function render() {
 	      var _this3 = this;
 
+	      console.log('input js');
 	      return _react2.default.createElement(
 	        'nav',
 	        null,
