@@ -65,6 +65,7 @@ export default class App extends Component {
   }
 
   render() {
+    console.log('app log');
     return (
       <div id="page-wrapper">
         <Input handleClick={this.handleClick.bind(this)} />
